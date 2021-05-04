@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: one
+  car: one
+  officer: one
+  date: 2021-05-04
+
+two:
+  address: two
+  car: two
+  officer: two
+  date: 2021-05-04
