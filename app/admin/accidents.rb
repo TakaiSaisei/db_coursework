@@ -1,6 +1,6 @@
 ActiveAdmin.register Accident do
 
-  permit_params :address_id, :officer_id, :description, :date, citizen_ids: [], car_ids: []
+  permit_params :address_id, :officer_id, :description, :date, citizen_ids: [], car_ids: [], penalties_attributes: [:accident_id, :citizen_id, :description, :amount]
 
   preserve_default_filters!
   filter :officer, as: :select, collection:
@@ -61,6 +61,15 @@ ActiveAdmin.register Accident do
       f.input :car_ids, as: :select, input_html: { multiple: true }, collection:
         Car.all.collect { |car| [car.license_plate, car.id] }
       f.input :date
+    end
+
+    f.inputs 'Penalty' do
+      f.has_many :penalties, heading: false, allow_destroy: true do |p|
+        p.input :citizen_id, as: :select, collection:
+          Citizen.all.collect { |citizen| ["#{citizen.first_name} #{citizen.middle_name} #{citizen.second_name}", citizen.id] }
+        p.input :amount
+        p.input :description
+      end
     end
     f.actions
   end

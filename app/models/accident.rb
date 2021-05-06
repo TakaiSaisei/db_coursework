@@ -3,6 +3,10 @@ class Accident < ApplicationRecord
   belongs_to :officer
   has_and_belongs_to_many :citizens
   has_and_belongs_to_many :cars
+  has_many :penalties
+
+  accepts_nested_attributes_for :penalties
+
   validates :date, :description, presence: true
 
   def self.generate

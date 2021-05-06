@@ -24,5 +24,15 @@ ActiveAdmin.register Penalty do
       column attribute
     end
   end
-  
+
+  form do |f|
+    f.semantic_errors(*f.object.errors.keys)
+
+    f.inputs 'Details' do
+      f.input :description
+      f.input :amount
+      f.input :payed
+    end
+    f.actions
+  end
 end
