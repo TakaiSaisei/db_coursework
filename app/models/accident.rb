@@ -17,13 +17,13 @@ class Accident < ApplicationRecord
                     'Нарушение правил пользования внешними световыми приборами, звуковыми сигналами, аварийной сигнализацией или знаком аварийной остановки',
                     'ч. 1. Нарушение правил перевозки грузов, а равно правил буксировки',
                     'ч. 3. Нарушение требований к перевозке детей, установленных Правилами дорожного движения']
-    5_000.times do
+    100_000.times do
       random_description = rand(0..10)
-      accident = Accident.create(address_id: rand(11..20),
-                                 officer_id: rand(1..10),
-                                 date: Faker::Date.backward(days: 500),
+      accident = Accident.create(address_id: rand(1001..1200),
+                                 officer_id: rand(1..100),
+                                 date: Faker::Date.backward(days: 3650),
                                  description: descriptions[random_description])
-      car = Car.find(rand(1..10))
+      car = Car.find(rand(1..500))
       citizen = car.citizen
       accident.citizens << citizen
       accident.cars << car

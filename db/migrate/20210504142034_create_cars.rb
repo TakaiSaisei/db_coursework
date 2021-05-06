@@ -4,6 +4,7 @@ class CreateCars < ActiveRecord::Migration[6.1]
       t.references :citizen, null: false, foreign_key: true
       t.string :manufacter, null: false
       t.string :model, null: false
+      t.string :license_plate, null: false
       t.date :registration_date, null: false
 
       t.timestamps
